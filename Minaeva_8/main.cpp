@@ -61,14 +61,32 @@ int main()
 	cout << "Всего солнечных дней: " << total_count_sunny << "\n";
 	cout << "Всего пасмурных дней: " << total_count_rainy << "\n";
 
+	for (int i = 0; i < 4; i++)
+	{
+		int week_count_sunny = count_days(weather, 1, i * 7, (i + 1) * 7);
+		int week_count_rainy = count_days(weather, 0, i * 7, (i + 1) * 7);
+
+		double week_sunny_s = s1 * week_count_sunny;
+		double week_rainy_s = s2 * week_count_rainy;
+
+		double week_s = week_sunny_s + week_rainy_s;
+
+		cout << "На неделе " << (i + 1) << "\n";
+		cout << "\tСолнечных дней: " << week_count_sunny << "\n";
+		cout << "\tПасмурных дней: " << week_count_rainy << "\n";
+		cout << "\tРасстояние за неделю: " << week_s << "\n";
+	}
+
 	double total_sunny_s = s1 * total_count_sunny;
 	double total_rainy_s = s2 * total_count_rainy;
 
 	double total_s = total_sunny_s + total_rainy_s;
 	double average_speed = total_s / DAYS;
 
-	cout << "Средняя скорость: " << average_speed << "\n";
+	cout << "Суммарное расстояние: " << total_s << "\n";	
 
+	cout << "Средняя скорость: " << average_speed << "\n";
+	
 	system("pause");
 
 	return 0;
